@@ -2,4 +2,4 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 chmod +x kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version
-gcloud auth login -y
+gcloud auth login 
