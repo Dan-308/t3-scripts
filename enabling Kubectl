@@ -17,7 +17,7 @@ sudo apt-get update && sudo apt-get install google-cloud-cli
 # Then the cloud project you want pick:
     Choose [1]
 
-# Do you want to configure a default Computer Region and Zone (Y/n)? y
+# Do you want to configure a default Computer Region and Zone (Y/n)? n
     Look through list and match to the region your VM is running on []
 
 
