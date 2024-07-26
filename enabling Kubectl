@@ -4,5 +4,20 @@ sudo apt-get install apt-transport-https ca-certificates gnupg curl sudo
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc
 sudo apt-get update && sudo apt-get install google-cloud-cli
-gcloud init
+
+# DO NOT INCLUDE THE BELOW COMMAND UNTIL YOU HAVE COMPLETED THE ABOVE.
+  gcloud init
+
+Pick configuration to use: 
+  Choose [1]
+
+Choose the account you would like to use to perform operations for this configuration:
+  Choose [2]
+
+Then the cloud project you want pick:
+  Choose [1]
+
+Do you want to configure a default Computer Region and Zone (Y/n)? y
+  Look through list and match to the region your VM is running on []
+
 
