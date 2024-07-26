@@ -1,0 +1,489 @@
+Linux t3-kubernetes-server 6.1.0-22-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.94-1 (2024-06-21) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+daniel_wright@t3-kubernetes-server:~$ sudo apt update
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:5 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]     
+Get:7 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable InRelease [1321 B]
+Get:2 https://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:3 https://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:8 https://packages.cloud.google.com/apt cloud-sdk-bookworm InRelease [1652 B]
+Get:4 https://deb.debian.org/debian bookworm-backports InRelease [56.6 kB]
+Get:6 https://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+Get:9 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable/main amd64 Packages [3128 B]
+Get:10 https://packages.cloud.google.com/apt cloud-sdk-bookworm/main all Packages [1506 kB]
+Get:11 https://deb.debian.org/debian bookworm-backports/main Sources.diff/Index [63.3 kB]
+Get:14 https://packages.cloud.google.com/apt cloud-sdk-bookworm/main amd64 Packages [3174 kB]
+Get:12 https://deb.debian.org/debian bookworm-backports/main amd64 Packages.diff/Index [63.3 kB]
+Get:13 https://deb.debian.org/debian bookworm-backports/main Translation-en.diff/Index [63.3 kB]
+Get:15 https://deb.debian.org/debian bookworm-backports/main Sources T-2024-07-25-1409.50-F-2024-07-09-1405.03.pdiff [50.8 kB]
+Get:16 https://deb.debian.org/debian bookworm-backports/main amd64 Packages T-2024-07-25-2007.51-F-2024-07-09-1405.03.pdiff [59.0 kB]
+Get:15 https://deb.debian.org/debian bookworm-backports/main Sources T-2024-07-25-1409.50-F-2024-07-09-1405.03.pdiff [50.8 kB]
+Get:16 https://deb.debian.org/debian bookworm-backports/main amd64 Packages T-2024-07-25-2007.51-F-2024-07-09-1405.03.pdiff [59.0 kB]
+Get:17 https://deb.debian.org/debian bookworm-backports/main Translation-en T-2024-07-25-0806.56-F-2024-07-11-1406.29.pdiff [19.8 kB]
+Get:17 https://deb.debian.org/debian bookworm-backports/main Translation-en T-2024-07-25-0806.56-F-2024-07-11-1406.29.pdiff [19.8 kB]
+Get:18 https://deb.debian.org/debian-security bookworm-security/main Sources [105 kB]
+Get:19 https://deb.debian.org/debian-security bookworm-security/main amd64 Packages [169 kB]
+Get:20 https://deb.debian.org/debian-security bookworm-security/main Translation-en [102 kB]
+Fetched 5692 kB in 1s (4705 kB/s)                                      
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+11 packages can be upgraded. Run 'apt list --upgradable' to see them.
+daniel_wright@t3-kubernetes-server:~$ sudo apt upgrade -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following NEW packages will be installed:
+  firmware-linux-free linux-image-6.1.0-23-cloud-amd64
+The following packages will be upgraded:
+  bind9-host bind9-libs exim4-base exim4-config exim4-daemon-light
+  google-cloud-cli google-cloud-cli-anthoscli
+  google-compute-engine-oslogin google-guest-agent
+  google-osconfig-agent linux-image-cloud-amd64
+11 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 154 MB of archives.
+After this operation, 107 MB of additional disk space will be used.
+Get:1 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Get:9 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]              
+Get:2 https://deb.debian.org/debian-security bookworm-security/main amd64 bind9-host amd64 1:9.18.28-1~deb12u1 [307 kB]
+Get:3 https://deb.debian.org/debian-security bookworm-security/main amd64 bind9-libs amd64 1:9.18.28-1~deb12u1 [1428 kB]
+Get:11 https://packages.cloud.google.com/apt cloud-sdk-bookworm/main amd64 google-cloud-cli-anthoscli amd64 485.0.0-0 [24.8 MB]
+Get:4 https://deb.debian.org/debian-security bookworm-security/main amd64 exim4-config all 4.96-15+deb12u5 [256 kB]
+Get:5 https://deb.debian.org/debian-security bookworm-security/main amd64 exim4-base amd64 4.96-15+deb12u5 [1117 kB]
+Get:6 https://deb.debian.org/debian-security bookworm-security/main amd64 exim4-daemon-light amd64 4.96-15+deb12u5 [605 kB]
+Get:7 https://deb.debian.org/debian-security bookworm-security/main amd64 linux-image-6.1.0-23-cloud-amd64 amd64 6.1.99-1 [25.8 MB]
+Get:8 https://deb.debian.org/debian-security bookworm-security/main amd64 linux-image-cloud-amd64 amd64 6.1.99-1 [1504 B]
+Get:10 https://deb.debian.org/debian bookworm/main amd64 firmware-linux-free all 20200122-1 [24.2 kB]
+Get:12 https://packages.cloud.google.com/apt cloud-sdk-bookworm/main amd64 google-cloud-cli amd64 485.0.0-0 [81.7 MB]
+Get:13 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable/main amd64 google-guest-agent amd64 1:20240716.00-g1 [12.4 MB]
+Get:14 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable/main amd64 google-compute-engine-oslogin amd64 1:20240701.00-g1+deb12 [431 kB]
+Get:15 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable/main amd64 google-osconfig-agent amd64 1:20240705.00-g1 [4883 kB]
+Fetched 154 MB in 3s (56.9 MB/s)                 
+apt-listchanges: Reading changelogs...
+Preconfiguring packages ...
+(Reading database ... 68822 files and directories currently installed.)
+Preparing to unpack .../00-bind9-host_1%3a9.18.28-1~deb12u1_amd64.deb ...
+Unpacking bind9-host (1:9.18.28-1~deb12u1) over (1:9.18.24-1) ...
+Preparing to unpack .../01-bind9-libs_1%3a9.18.28-1~deb12u1_amd64.deb ...
+Unpacking bind9-libs:amd64 (1:9.18.28-1~deb12u1) over (1:9.18.24-1) ...
+Preparing to unpack .../02-exim4-config_4.96-15+deb12u5_all.deb ...
+Unpacking exim4-config (4.96-15+deb12u5) over (4.96-15+deb12u4) ...
+Preparing to unpack .../03-exim4-base_4.96-15+deb12u5_amd64.deb ...
+Unpacking exim4-base (4.96-15+deb12u5) over (4.96-15+deb12u4) ...
+Preparing to unpack .../04-exim4-daemon-light_4.96-15+deb12u5_amd64.deb ...
+Unpacking exim4-daemon-light (4.96-15+deb12u5) over (4.96-15+deb12u4) ...
+Selecting previously unselected package firmware-linux-free.
+Preparing to unpack .../05-firmware-linux-free_20200122-1_all.deb ...
+Unpacking firmware-linux-free (20200122-1) ...
+Preparing to unpack .../06-google-cloud-cli-anthoscli_485.0.0-0_amd64.deb ...
+Unpacking google-cloud-cli-anthoscli (485.0.0-0) over (483.0.0-0) ...
+Preparing to unpack .../07-google-cloud-cli_485.0.0-0_amd64.deb ...
+Unpacking google-cloud-cli (485.0.0-0) over (483.0.0-0) ...
+Preparing to unpack .../08-google-guest-agent_1%3a20240716.00-g1_amd64.deb ...
+Unpacking google-guest-agent (1:20240716.00-g1) over (1:20240528.00-g1) ...
+Preparing to unpack .../09-google-compute-engine-oslogin_1%3a20240701.00-g1+deb12_amd64.deb ...
+Unpacking google-compute-engine-oslogin (1:20240701.00-g1+deb12) over (1:20240415.00-g1+deb12) ...
+Preparing to unpack .../10-google-osconfig-agent_1%3a20240705.00-g1_amd64.deb ...
+Unpacking google-osconfig-agent (1:20240705.00-g1) over (1:20240524.03-g1) ...
+Selecting previously unselected package linux-image-6.1.0-23-cloud-amd64.
+Preparing to unpack .../11-linux-image-6.1.0-23-cloud-amd64_6.1.99-1_amd64.deb ...
+Unpacking linux-image-6.1.0-23-cloud-amd64 (6.1.99-1) ...
+Preparing to unpack .../12-linux-image-cloud-amd64_6.1.99-1_amd64.deb ...
+Unpacking linux-image-cloud-amd64 (6.1.99-1) over (6.1.94-1) ...
+Setting up firmware-linux-free (20200122-1) ...
+Setting up bind9-libs:amd64 (1:9.18.28-1~deb12u1) ...
+Setting up google-osconfig-agent (1:20240705.00-g1) ...
+Setting up google-cloud-cli (485.0.0-0) ...
+Setting up exim4-config (4.96-15+deb12u5) ...
+Setting up bind9-host (1:9.18.28-1~deb12u1) ...
+Setting up linux-image-6.1.0-23-cloud-amd64 (6.1.99-1) ...
+/etc/kernel/postinst.d/initramfs-tools:
+update-initramfs: Generating /boot/initrd.img-6.1.0-23-cloud-amd64
+/etc/kernel/postinst.d/zz-update-grub:
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-6.1.0-23-cloud-amd64
+daniel_wright@t3-kubernetes-server:~$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:-- 23 49.0M   23 11.7M    0     0  11.5M      0  0:00:04  0:00:01  0:00:03100 49.0M  100 49.0M    0     0  26.3M      0  0:00:01  0:00:01 --:--:-- 26.2M
+daniel_wright@t3-kubernetes-server:~$ chmod +x kubectl
+daniel_wright@t3-kubernetes-server:~$ ls -l
+total 50252
+-rwxr-xr-x 1 daniel_wright daniel_wright 51454104 Jul 26 10:30 kubectl
+daniel_wright@t3-kubernetes-server:~$ sudo mv ./kubectl /usr/local/bin/kubectl
+daniel_wright@t3-kubernetes-server:~$ kubectl version --client
+Client Version: v1.30.3
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+daniel_wright@t3-kubernetes-server:~$ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-387.0.0-linux-x86_64.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:-- 62 98.3M   62 61.3M    0     0   230M      0 --:--:-- --:--:-- --:--:--100 98.3M  100 98.3M    0     0   274M      0 --:--:-- --:--:-- --:--:--  273M
+daniel_wright@t3-kubernetes-server:~$ tar -xf google-cloud-cli-387.0.0-linux-x86_64.tar.gz
+daniel_wright@t3-kubernetes-server:~$ ./google-cloud-sdk/install.sh
+Welcome to the Google Cloud CLI!
+
+To help improve the quality of this product, we collect anonymized usage data
+and anonymized stacktraces when crashes are encountered; additional information
+is available at <https://cloud.google.com/sdk/usage-statistics>. This data is
+handled in accordance with our privacy policy
+<https://cloud.google.com/terms/cloud-privacy-notice>. You may choose to opt in this
+collection now (by choosing 'Y' at the below prompt), or at any time in the
+future by running the following command:
+
+    gcloud config set disable_usage_reporting false
+
+Do you want to help improve the Google Cloud CLI (y/N)?  n
+
+
+Your current Google Cloud CLI version is: 387.0.0
+The latest available version is: 485.0.0
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                     Components                                                     │
+├──────────────────┬──────────────────────────────────────────────────────┬──────────────────────────────┬───────────┤
+│      Status      │                         Name                         │              ID              │    Size   │
+├──────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────┼───────────┤
+│ Update Available │ BigQuery Command Line Tool                           │ bq                           │   1.7 MiB │
+│ Update Available │ Cloud Storage Command Line Tool                      │ gsutil                       │  11.3 MiB │
+│ Update Available │ Google Cloud CLI Core Libraries                      │ core                         │  19.2 MiB │
+│ Not Installed    │ App Engine Go Extensions                             │ app-engine-go                │   4.7 MiB │
+│ Not Installed    │ Appctl                                               │ appctl                       │  21.0 MiB │
+│ Not Installed    │ Artifact Registry Go Module Package Helper           │ package-go-module            │   < 1 MiB │
+│ Not Installed    │ Bundled Python 3.11                                  │ bundled-python3-unix         │  74.0 MiB │
+│ Not Installed    │ Cloud Bigtable Command Line Tool                     │ cbt                          │  17.7 MiB │
+│ Not Installed    │ Cloud Bigtable Emulator                              │ bigtable                     │   7.3 MiB │
+│ Not Installed    │ Cloud Datastore Emulator                             │ cloud-datastore-emulator     │  36.2 MiB │
+│ Not Installed    │ Cloud Firestore Emulator                             │ cloud-firestore-emulator     │  45.2 MiB │
+│ Not Installed    │ Cloud Pub/Sub Emulator                               │ pubsub-emulator              │  63.7 MiB │
+│ Not Installed    │ Cloud Run Proxy                                      │ cloud-run-proxy              │  13.3 MiB │
+│ Not Installed    │ Cloud SQL Proxy v2                                   │ cloud-sql-proxy              │  13.8 MiB │
+│ Not Installed    │ Cloud Spanner Emulator                               │ cloud-spanner-emulator       │  36.6 MiB │
+│ Not Installed    │ Cloud Spanner Migration Tool                         │ harbourbridge                │  20.9 MiB │
+│ Not Installed    │ Google Cloud CRC32C Hash Tool                        │ gcloud-crc32c                │   1.3 MiB │
+│ Not Installed    │ Google Container Registry's Docker credential helper │ docker-credential-gcr        │   1.8 MiB │
+│ Not Installed    │ Kustomize                                            │ kustomize                    │   4.3 MiB │
+│ Not Installed    │ Log Streaming                                        │ log-streaming                │  13.9 MiB │
+│ Not Installed    │ Minikube                                             │ minikube                     │  34.4 MiB │
+│ Not Installed    │ Nomos CLI                                            │ nomos                        │  30.3 MiB │
+│ Not Installed    │ On-Demand Scanning API extraction helper             │ local-extract                │  14.4 MiB │
+│ Not Installed    │ Skaffold                                             │ skaffold                     │  24.1 MiB │
+│ Not Installed    │ Spanner migration tool                               │ spanner-migration-tool       │  23.6 MiB │
+│ Not Installed    │ Terraform Tools                                      │ terraform-tools              │  66.1 MiB │
+│ Not Installed    │ anthos-auth                                          │ anthos-auth                  │  22.0 MiB │
+│ Not Installed    │ config-connector                                     │ config-connector             │  91.1 MiB │
+│ Not Installed    │ enterprise-certificate-proxy                         │ enterprise-certificate-proxy │   8.6 MiB │
+│ Not Installed    │ gcloud Alpha Commands                                │ alpha                        │   < 1 MiB │
+│ Not Installed    │ gcloud Beta Commands                                 │ beta                         │   < 1 MiB │
+│ Not Installed    │ gcloud app Java Extensions                           │ app-engine-java              │ 127.8 MiB │
+│ Not Installed    │ gcloud app Python Extensions                         │ app-engine-python            │   5.0 MiB │
+│ Not Installed    │ gcloud app Python Extensions (Extra Libraries)       │ app-engine-python-extras     │   < 1 MiB │
+│ Not Installed    │ gke-gcloud-auth-plugin                               │ gke-gcloud-auth-plugin       │   4.0 MiB │
+│ Not Installed    │ istioctl                                             │ istioctl                     │  24.0 MiB │
+│ Not Installed    │ kpt                                                  │ kpt                          │  14.6 MiB │
+│ Not Installed    │ kubectl                                              │ kubectl                      │   < 1 MiB │
+│ Not Installed    │ kubectl-oidc                                         │ kubectl-oidc                 │  22.0 MiB │
+│ Not Installed    │ pkg                                                  │ pkg                          │           │
+└──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────────┴───────────┘
+To install or remove components at your current SDK version [387.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [485.0.0], run:
+  $ gcloud components update
+
+
+Modify profile to update your $PATH and enable shell command completion?
+
+Do you want to continue (Y/n)?  y
+
+The Google Cloud SDK installer will now prompt you to update an rc file 
+to bring the Google Cloud CLIs into your environment.
+
+Enter a path to an rc file to update, or leave blank to use 
+[/home/daniel_wright/.bashrc]:  
+Backing up [/home/daniel_wright/.bashrc] to [/home/daniel_wright/.bashrc.backup].
+[/home/daniel_wright/.bashrc] has been updated.
+
+==> Start a new shell for the changes to take effect.
+
+
+For more information on how to get started, please visit:
+  https://cloud.google.com/sdk/docs/quickstarts
+
+
+daniel_wright@t3-kubernetes-server:~$ gcloud components update
+To help improve the quality of this product, we collect anonymized usage
+ data and anonymized stacktraces when crashes are encountered; 
+additional information is available at 
+<https://cloud.google.com/sdk/usage-statistics>. This data is handled in
+ accordance with our privacy policy 
+<https://cloud.google.com/terms/cloud-privacy-notice>. You may choose to
+ opt in this collection now (by choosing 'Y' at the below prompt), or at
+ any time in the future by running the following command:
+
+    gcloud config set disable_usage_reporting false
+
+Do you want to opt-in (y/N)?  n
+
+Beginning update. This process may take several minutes.
+ERROR: (gcloud.components.update) 
+You cannot perform this action because the Google Cloud CLI component manager 
+is disabled for this installation. You can run the following command 
+to achieve the same result for this installation: 
+
+sudo apt-get update && sudo apt-get --only-upgrade install google-cloud-cli-anthoscli google-cloud-cli-local-extract google-cloud-cli-docker-credential-gcr google-cloud-cli-kpt google-cloud-cli-spanner-migration-tool google-cloud-cli google-cloud-cli-firestore-emulator google-cloud-cli-anthos-auth google-cloud-cli-istioctl google-cloud-cli-app-engine-grpc google-cloud-cli-config-connector google-cloud-cli-cloud-run-proxy google-cloud-cli-log-streaming google-cloud-cli-package-go-module google-cloud-cli-app-engine-go google-cloud-cli-enterprise-certificate-proxy kubectl google-cloud-cli-datastore-emulator google-cloud-cli-spanner-emulator google-cloud-cli-pubsub-emulator google-cloud-cli-app-engine-python google-cloud-cli-skaffold google-cloud-cli-nomos google-cloud-cli-cloud-build-local google-cloud-cli-harbourbridge google-cloud-cli-terraform-tools google-cloud-cli-bigtable-emulator google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-app-engine-java google-cloud-cli-kubectl-oidc google-cloud-cli-app-engine-python-extras google-cloud-cli-cbt google-cloud-cli-minikube
+
+
+daniel_wright@t3-kubernetes-server:~$ sudo gcloud components update
+To help improve the quality of this product, we collect anonymized usage
+ data and anonymized stacktraces when crashes are encountered; 
+additional information is available at 
+<https://cloud.google.com/sdk/usage-statistics>. This data is handled in
+ accordance with our privacy policy 
+<https://cloud.google.com/terms/cloud-privacy-notice>. You may choose to
+ opt in this collection now (by choosing 'Y' at the below prompt), or at
+ any time in the future by running the following command:
+
+    gcloud config set disable_usage_reporting false
+
+Do you want to opt-in (y/N)?  n
+
+Beginning update. This process may take several minutes.
+ERROR: (gcloud.components.update) 
+You cannot perform this action because the Google Cloud CLI component manager 
+is disabled for this installation. You can run the following command 
+to achieve the same result for this installation: 
+
+sudo apt-get update && sudo apt-get --only-upgrade install google-cloud-cli-cbt google-cloud-cli-firestore-emulator google-cloud-cli-spanner-emulator google-cloud-cli-pubsub-emulator google-cloud-cli-istioctl google-cloud-cli-cloud-build-local google-cloud-cli-enterprise-certificate-proxy google-cloud-cli-cloud-run-proxy google-cloud-cli-kpt google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-docker-credential-gcr google-cloud-cli-app-engine-go google-cloud-cli-app-engine-grpc google-cloud-cli-bigtable-emulator google-cloud-cli-spanner-migration-tool google-cloud-cli-kubectl-oidc google-cloud-cli-minikube google-cloud-cli-nomos google-cloud-cli google-cloud-cli-package-go-module kubectl google-cloud-cli-local-extract google-cloud-cli-app-engine-java google-cloud-cli-config-connector google-cloud-cli-app-engine-python google-cloud-cli-datastore-emulator google-cloud-cli-terraform-tools google-cloud-cli-anthoscli google-cloud-cli-skaffold google-cloud-cli-harbourbridge google-cloud-cli-anthos-auth google-cloud-cli-log-streaming google-cloud-cli-app-engine-python-extras
+
+
+daniel_wright@t3-kubernetes-server:~$ sudo apt-get update && sudo apt-get --only-upgrade install google-cloud-cli-cbt google-cloud-cli-firestore-emulator google-cloud-cli-spanner-emulator google-cloud-cli-pubsub-emulator google-cloud-cli-istioctl google-cloud-cli-cloud-build-local google-cloud-cli-enterprise-certificate-proxy google-cloud-cli-cloud-run-proxy google-cloud-cli-kpt google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-docker-credential-gcr google-cloud-cli-app-engine-go google-cloud-cli-app-engine-grpc google-cloud-cli-bigtable-emulator google-cloud-cli-spanner-migration-tool google-cloud-cli-kubectl-oidc google-cloud-cli-minikube google-cloud-cli-nomos google-cloud-cli google-cloud-cli-package-go-module kubectl google-cloud-cli-local-extract google-cloud-cli-app-engine-java google-cloud-cli-config-connector google-cloud-cli-app-engine-python google-cloud-cli-datastore-emulator google-cloud-cli-terraform-tools google-cloud-cli-anthoscli google-cloud-cli-skaffold google-cloud-cli-harbourbridge google-cloud-cli-anthos-auth google-cloud-cli-log-streaming google-cloud-cli-app-engine-python-extras
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:2 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]
+Hit:3 https://deb.debian.org/debian bookworm InRelease                 
+Hit:7 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable InRelease
+Hit:4 https://deb.debian.org/debian bookworm-updates InRelease
+Hit:5 https://deb.debian.org/debian bookworm-backports InRelease
+Hit:6 https://deb.debian.org/debian-security bookworm-security InRelease
+Hit:8 https://packages.cloud.google.com/apt cloud-sdk-bookworm InRelease
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Skipping google-cloud-cli-cbt, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-firestore-emulator, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-spanner-emulator, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-pubsub-emulator, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-istioctl, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-cloud-build-local, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-enterprise-certificate-proxy, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-cloud-run-proxy, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-kpt, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-gke-gcloud-auth-plugin, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-docker-credential-gcr, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-app-engine-go, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-app-engine-grpc, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-bigtable-emulator, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-spanner-migration-tool, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-kubectl-oidc, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-minikube, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-nomos, it is not installed and only upgrades are requested.
+google-cloud-cli is already the newest version (485.0.0-0).
+Skipping google-cloud-cli-package-go-module, it is not installed and only upgrades are requested.
+Skipping kubectl, it is not installed and only upgrades are requested.
+Skipping google-cloud-cli-local-extract, it is not installed and only up
+daniel_wright@t3-kubernetes-server:~$ gcloud auth login
+
+You are running on a Google Compute Engine virtual machine.
+It is recommended that you use service accounts for authentication.
+
+You can run:
+
+  $ gcloud config set account `ACCOUNT`
+
+to switch accounts if necessary.
+
+Your credentials may be visible to others with access to this
+virtual machine. Are you sure you want to authenticate with
+your personal account?
+
+Do you want to continue (Y/n)?  y
+
+Go to the following link in your browser, and complete the sign-in prompts:
+
+    https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=32555940559.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fsdk.cloud.google.com%2Fauthcode.html&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fappengine.admin+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fsqlservice.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcompute+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Faccounts.reauth&state=NjCc7UhDPYykaXkIFMoEOSQTSi3teh&prompt=consent&token_usage=remote&access_type=offline&code_challenge=P8vp-6veuEjf4-XKvZJaLFgdqqtkT_j8cV2ulusF8f0&code_challenge_method=S256
+
+Once finished, enter the verification code provided in your browser: 4/0AcvDMrC7ES-OfgkDjLlF9uFXLep-BwAiljT0gyPO046Lfd91OBRcdNSU1OpEFlGvwNf1zQ
+
+You are now logged in as [daniel.wright@qa-training.net].
+Your current project is [lbg-mea-20].  You can change this setting by running:
+  $ gcloud config set project PROJECT_ID
+daniel_wright@t3-kubernetes-server:~$ sudo apt-get install apt-transport-https ca-certificates gnupg curl
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ca-certificates is already the newest version (20230311).
+gnupg is already the newest version (2.2.40-1.1).
+gnupg set to manually installed.
+curl is already the newest version (7.88.1-10+deb12u6).
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 25.2 kB of archives.
+After this operation, 35.8 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:2 https://deb.debian.org/debian bookworm/main amd64 apt-transport-https all 2.6.1 [25.2 kB]
+Fetched 25.2 kB in 0s (291 kB/s)               
+Selecting previously unselected package apt-transport-https.
+(Reading database ... 70375 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.6.1_all.deb ...
+Unpacking apt-transport-https (2.6.1) ...
+Setting up apt-transport-https (2.6.1) ...
+daniel_wright@t3-kubernetes-server:~$ sudo echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main
+daniel_wright@t3-kubernetes-server:~$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--100  1022  100  1022    0     0  18184      0 --:--:-- --:--:-- --:--:-- 18250
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBGCRt7MBCADkYJHHQQoL6tKrW/LbmfR9ljz7ib2aWno4JO3VKQvLwjyUMPpq
+/SXXMOnx8jXwgWizpPxQYDRJ0SQXS9ULJ1hXRL/OgMnZAYvYDeV2jBnKsAIEdiG/
+e1qm8P4W9qpWJc+hNq7FOT13RzGWRx57SdLWSXo0KeY38r9lvjjOmT/cuOcmjwlD
+T9XYf/RSO+yJ/AsyMdAr+ZbDeQUd9HYJiPdI04lGaGM02MjDMnx+monc+y54t+Z+
+ry1WtQdzoQt9dHlIPlV1tR+xV5DHHsejCZxu9TWzzSlL5wfBBeEz7R/OIzivGJpW
+QdJzd+2QDXSRg9q2XYWP5ZVtSgjVVJjNlb6ZABEBAAG0VEFydGlmYWN0IFJlZ2lz
+dHJ5IFJlcG9zaXRvcnkgU2lnbmVyIDxhcnRpZmFjdC1yZWdpc3RyeS1yZXBvc2l0
+b3J5LXNpZ25lckBnb29nbGUuY29tPokBTgQTAQoAOBYhBDW6oLM+nrOW9ZyoOMC6
+XObcYxWjBQJgkbezAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEMC6XObc
+YxWj+igIAMFh6DrAYMeq9sbZ1ZG6oAMrinUheGQbEqe76nIDQNsZnhDwZ2wWqgVC
+7DgOMqlhQmOmzm7M6Nzmq2dvPwq3xC2OeI9fQyzjT72deBTzLP7PJok9PJFOMdLf
+ILSsUnmMsheQt4DUO0jYAX2KUuWOIXXJaZ319QyoRNBPYa5qz7qXS7wHLOY89IDq
+fHt6Aud8ER5zhyOyhytcYMeaGC1g1IKWmgewnhEq02FantMJGlmmFi2eA0EPD02G
+C3742QGqRxLwjWsm5/TpyuU24EYKRGCRm7QdVIo3ugFSetKrn0byOxWGBvtu4fH8
+XWvZkRT+u+yzH1s5yFYBqc2JTrrJvRU=
+=zwB2
+-----END PGP PUBLIC KEY BLOCK-----
+daniel_wright@t3-kubernetes-server:~$ sudo apt-get update && sudo apt-get install google-cloud-cli
+Get:1 file:/etc/apt/mirrors/debian.list Mirrorlist [30 B]
+Get:5 file:/etc/apt/mirrors/debian-security.list Mirrorlist [39 B]     
+Hit:2 https://deb.debian.org/debian bookworm InRelease      
+Get:7 https://packages.cloud.google.com/apt cloud-sdk InRelease [1616 B]
+Hit:3 https://deb.debian.org/debian bookworm-updates InRelease
+Hit:4 https://deb.debian.org/debian bookworm-backports InRelease
+Hit:6 https://deb.debian.org/debian-security bookworm-security InRelease
+Hit:8 https://packages.cloud.google.com/apt google-compute-engine-bookworm-stable InRelease
+Hit:9 https://packages.cloud.google.com/apt cloud-sdk-bookworm InRelease
+Get:10 https://packages.cloud.google.com/apt cloud-sdk/main all Packages [1485 kB]
+Get:11 https://packages.cloud.google.com/apt cloud-sdk/main amd64 Packages [3124 kB]
+Fetched 4611 kB in 1s (4790 kB/s)  
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+google-cloud-cli is already the newest version (485.0.0-0).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+daniel_wright@t3-kubernetes-server:~$ gcloud init
+Welcome! This command will take you through the configuration of gcloud.
+
+Settings from your current configuration [default] are:
+core:
+  account: daniel.wright@qa-training.net
+  disable_usage_reporting: 'True'
+  project: lbg-mea-20
+
+Pick configuration to use:
+ [1] Re-initialize this configuration [default] with new settings 
+ [2] Create a new configuration
+Please enter your numeric choice:  1
+
+Your current configuration has been set to: [default]
+
+You can skip diagnostics next time by using the following flag:
+  gcloud init --skip-diagnostics
+
+Network diagnostic detects and fixes local network connection issues.
+Checking network connection...done.                                    
+Reachability Check passed.
+Network diagnostic passed (1/1 checks passed).
+
+Choose the account you would like to use to perform operations for this 
+configuration:
+ [1] 273737539212-compute@developer.gserviceaccount.com
+ [2] daniel.wright@qa-training.net
+ [3] Log in with a new account
+Please enter your numeric choice:  2
+
+You are logged in as: [daniel.wright@qa-training.net].
+
+Pick cloud project to use: 
+ [1] lbg-mea-20
+ [2] Enter a project ID
+ [3] Create a new project
+Please enter numeric choice or text value (must exactly match list 
+item):  1
+
+Your current project has been set to: [lbg-mea-20].
+
+Do you want to configure a default Compute Region and Zone? (Y/n)?  n
+daniel_wright@t3-kubernetes-server:~$ sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  google-cloud-cli-gke-gcloud-auth-plugin
+The following NEW packages will be installed:
+  google-cloud-cli-gke-gcloud-auth-plugin
+  google-cloud-sdk-gke-gcloud-auth-plugin
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 3231 kB of archives.
+After this operation, 11.1 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 https://packages.cloud.google.com/apt cloud-sdk/main amd64 google-cloud-cli-gke-gcloud-auth-plugin amd64 485.0.0-0 [3226 kB]
+Get:2 https://packages.cloud.google.com/apt cloud-sdk/main all google-cloud-sdk-gke-gcloud-auth-plugin all 467.0.0-0 [5018 B]
+Fetched 3231 kB in 0s (12.3 MB/s)                                 
+Selecting previously unselected package google-cloud-cli-gke-gcloud-auth-plugin.
+(Reading database ... 70379 files and directories currently installed.)
+Preparing to unpack .../google-cloud-cli-gke-gcloud-auth-plugin_485.0.0-0_amd64.deb ...
+Unpacking google-cloud-cli-gke-gcloud-auth-plugin (485.0.0-0) ...
+Selecting previously unselected package google-cloud-sdk-gke-gcloud-auth-plugin.
+Preparing to unpack .../google-cloud-sdk-gke-gcloud-auth-plugin_467.0.0-0_all.deb ...
+Unpacking google-cloud-sdk-gke-gcloud-auth-plugin (467.0.0-0) ...
+Setting up google-cloud-cli-gke-gcloud-auth-plugin (485.0.0-0) ...
+Setting up google-cloud-sdk-gke-gcloud-auth-plugin (467.0.0-0) ...
+daniel_wright@t3-kubernetes-server:~$ gcloud container clusters get-credentials t3-cluster --zone europe-west1 --project lbg-mea-20
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for t3-cluster.
+daniel_wright@t3-kubernetes-server:~$ History
+-bash: History: command not found
+daniel_wright@t3-kubernetes-server:~$ history
+    1  sudo apt update
+    2  sudo apt upgrade -y
+    3  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+    4  chmod +x kubectl
+    5  ls -l
+    6  sudo mv ./kubectl /usr/local/bin/kubectl
+    7  kubectl version --client
+    8  curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-387.0.0-linux-x86_64.tar.gz
+    9  tar -xf google-cloud-cli-387.0.0-linux-x86_64.tar.gz
+   10  ./google-cloud-sdk/install.sh
+   11  gcloud components update
+   12  sudo gcloud components update
+   13  sudo apt-get update && sudo apt-get --only-upgrade install google-cloud-cli-cbt google-cloud-cli-firestore-emulator google-cloud-cli-spanner-emulator google-cloud-cli-pubsub-emulator google-cloud-cli-istioctl google-cloud-cli-cloud-build-local google-cloud-cli-enterprise-certificate-proxy google-cloud-cli-cloud-run-proxy google-cloud-cli-kpt google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-docker-credential-gcr google-cloud-cli-app-engine-go google-cloud-cli-app-engine-grpc google-cloud-cli-bigtable-emulator google-cloud-cli-spanner-migration-tool google-cloud-cli-kubectl-oidc google-cloud-cli-minikube google-cloud-cli-nomos google-cloud-cli google-cloud-cli-package-go-module kubectl google-cloud-cli-local-extract google-cloud-cli-app-engine-java google-cloud-cli-config-connector google-cloud-cli-app-engine-python google-cloud-cli-datastore-emulator google-cloud-cli-terraform-tools google-cloud-cli-anthoscli google-cloud-cli-skaffold google-cloud-cli-harbourbridge google-cloud-cli-anthos-auth google-cloud-cli-log-streaming google-cloud-cli-app-engine-python-extras
+   14  gcloud auth login
+   15  sudo apt-get install apt-transport-https ca-certificates gnupg curl
+   16  sudo echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+   17  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.asc
+   18  sudo apt-get update && sudo apt-get install google-cloud-cli
+   19  gcloud init
+   20  sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+   21  gcloud container clusters get-credentials t3-cluster --zone europe-west1 --project lbg-mea-20
+   22  History
+   23  history
